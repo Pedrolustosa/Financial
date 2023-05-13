@@ -3,6 +3,11 @@ using Domain.Interfaces.Generics;
 using Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Repository.Generics;
+using Domain.Interfaces.ICategory;
+using Infrastructure.Repository;
+using Domain.Interfaces.IUserFinancialSystem;
+using Domain.Interfaces.IFinancialSystem;
+using Domain.Interfaces.IExpenditure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +25,10 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 //Interface and Repository
 builder.Services.AddSingleton(typeof(IGeneric<>), typeof(GenericRepository<>));
+builder.Services.AddSingleton<ICategory, CategoryRepository>();
+builder.Services.AddSingleton<IExpenditure, ExpenditureRepository>();
+builder.Services.AddSingleton<IFinancialSystem, FinancialSystemRepository>();
+builder.Services.AddSingleton<IUserFinancialSystem, UserFinancialSystemRepository>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Entities.Entities
 {
     [Table("Dispense")]
-    public class Dispense : Base
+    public class Expenditure : Base
     {
         public decimal Value { get; set; }
 
@@ -12,7 +12,7 @@ namespace Entities.Entities
 
         public int Year { get; set; }
 
-        public EnumTypeDipense TypeDipense { get; set; }
+        public EnumTypeExpenditure TypeDipense { get; set; }
 
         public DateTime RegistrationDate { get; set; }
 

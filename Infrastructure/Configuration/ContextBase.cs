@@ -11,7 +11,7 @@ namespace Infrastructure.Configuration
         public DbSet<FinancialSystem> FinancialSystem { get; set; }
         public DbSet<UserFinancialSystem> UserFinancialSystem { get; set; }
         public DbSet<Category> Category { get; set; }
-        public DbSet<Dispense> Dispense { get; set; }
+        public DbSet<Expenditure> Expenditure { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
