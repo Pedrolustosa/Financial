@@ -1,4 +1,24 @@
-﻿namespace Domain.Interfaces.IServices
+﻿using Entities.Entities;
+
+namespace Domain.Interfaces.IServices
 {
-    public interface IFinancialSystemService { }
+    /// <summary>
+    /// The financial system service interface.
+    /// </summary>
+    public interface IFinancialSystemService 
+    {
+        /// <summary>
+        /// Add financial system.
+        /// </summary>
+        /// <param name="financialSystem">The financial system.</param>
+        /// <returns>A Task.</returns>
+        Task AddFinancialSystem(FinancialSystem financialSystem);
+        /// <summary>
+        /// Updates the financial system.
+        /// </summary>
+        /// <param name="financialSystem">The financial system.</param>
+        /// <returns>A Task.</returns>
+        Task UpdateFinancialSystem(FinancialSystem financialSystem);
+
+    }
 }

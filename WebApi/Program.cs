@@ -1,6 +1,8 @@
+using Domain.Services;
 using Entities.Entities;
 using Infrastructure.Repository;
 using Domain.Interfaces.Generics;
+using Domain.Interfaces.IServices;
 using Domain.Interfaces.ICategory;
 using Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +28,12 @@ builder.Services.AddSingleton<ICategory, CategoryRepository>();
 builder.Services.AddSingleton<IExpenditure, ExpenditureRepository>();
 builder.Services.AddSingleton<IFinancialSystem, FinancialSystemRepository>();
 builder.Services.AddSingleton<IUserFinancialSystem, UserFinancialSystemRepository>();
+
+//Services Domain
+builder.Services.AddSingleton<ICategoryService, CategoryService>();
+builder.Services.AddSingleton<IExpenditureService, ExpenditureService>();
+builder.Services.AddSingleton<IFinancialSystemService, FinancialSystemService>();
+builder.Services.AddSingleton<IUserFinancialSystemService, UserFinancialSystemService>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
