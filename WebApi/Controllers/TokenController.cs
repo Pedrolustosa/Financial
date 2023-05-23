@@ -58,7 +58,7 @@ namespace WebApi.Controllers
                                                  .AddClaim("UserAPINumber", "1")
                                                  .AddExpiry(5)
                                                  .Builder();
-                return Ok(token.Value);
+                return Ok($"Token: {token.Value}");
             }
             else
             {
