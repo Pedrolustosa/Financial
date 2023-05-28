@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Domain.Interfaces.IServices;
 using Domain.Interfaces.IFinancialSystem;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
@@ -9,6 +10,7 @@ namespace WebApi.Controllers
     /// The financial system controller.
     /// </summary>
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class FinancialSystemController : ControllerBase
     {
