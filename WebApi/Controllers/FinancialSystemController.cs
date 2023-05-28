@@ -38,11 +38,11 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="emailUser">The email user.</param>
         /// <returns><![CDATA[Task<object>]]></returns>
-        [HttpGet("/api/GetAllFinancialSystemUserAsync")]
+        [HttpGet("/api/GetAllUserFinancialSystemAsync")]
         [Produces("application/json")]
-        public async Task<object> GetAllFinancialSystemUserAsync(string emailUser)
+        public async Task<object> GetAllUserFinancialSystemUserAsync(string emailUser)
         {
-            return await _iFinancialSystem.GetAllFinancialSystemUserAsync(emailUser);
+            return await _iFinancialSystem.GetAllUserFinancialSystemAsync(emailUser);
         }
 
         /// <summary>
@@ -58,11 +58,24 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
+        /// Add financial system.
+        /// </summary>
+        /// <param name="financialSystem">The financial system.</param>
+        /// <returns><![CDATA[Task<object>]]></returns>
+        [HttpPost("/api/AddFinancialSystem")]
+        [Produces("application/json")]
+        public async Task<object> AddFinancialSystem(FinancialSystem financialSystem)
+        {
+            await _iFinancialSystemService.AddFinancialSystem(financialSystem);
+            return Task.FromResult(financialSystem);
+        }
+
+        /// <summary>
         /// Updates the financial system.
         /// </summary>
         /// <param name="financialSystem">The financial system.</param>
         /// <returns><![CDATA[Task<object>]]></returns>
-        [HttpPost("/api/UpdateFinancialSystem")]
+        [HttpPut("/api/UpdateFinancialSystem")]
         [Produces("application/json")]
         public async Task<object> UpdateFinancialSystem(FinancialSystem financialSystem)
         {
