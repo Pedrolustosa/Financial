@@ -71,13 +71,13 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Gets the expenditur by id.
+        /// Gets the expenditure by id.
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns><![CDATA[Task<object>]]></returns>
         [HttpGet("/api/GetExpenditurById")]
         [Produces("application/json")]
-        public async Task<object> GetExpenditurById(int id)
+        public async Task<object> GetExpenditureById(int id)
         {
             return await _iExpenditure.GetEntityById(id);
         }
@@ -101,6 +101,18 @@ namespace WebApi.Controllers
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Load chart.
+        /// </summary>
+        /// <param name="userEmail">The user email.</param>
+        /// <returns><![CDATA[Task<object>]]></returns>
+        [HttpGet("/api/LoadChart")]
+        [Produces("application/json")]
+        public async Task<object> LoadChart(string userEmail)
+        {
+            return await _iExpenditureService.LoadChart(userEmail);
         }
     }
 }

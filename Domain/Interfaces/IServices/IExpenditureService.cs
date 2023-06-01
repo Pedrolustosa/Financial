@@ -20,5 +20,12 @@ namespace Domain.Interfaces.IServices
         /// <param name="expenditure">The expenditure.</param>
         /// <returns>A Task.</returns>
         Task UpdateExpenditure(Expenditure expenditure);
+
+        /// <summary>
+        /// Load chart.
+        /// </summary>
+        /// <param name="emailUser">The email user.</param>
+        /// <returns><![CDATA[Task<object>]]></returns>
+        Task<object> LoadChart(string emailUser);
     }
 }
