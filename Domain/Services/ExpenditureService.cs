@@ -42,6 +42,34 @@ namespace Domain.Services
         }
 
         /// <summary>
+        /// Load chart.
+        /// </summary>
+        /// <param name="emailUser">The email user.</param>
+        /// <returns><![CDATA[Task<object>]]></returns>
+        public async Task<object> LoadChart(string emailUser)
+        {
+            var expenditureUser = await _iExpenditure.GetAllExpenditureUserAsync(emailUser);
+            var expenditureBefore = await _iExpenditure.GetAllExpenditureUserNotPaidBeforeMonthAsync(emailUser);
+            var expenditureNotPaidMonthBefore = expenditureBefore.Any() ? 
+                                                expenditureBefore.AsEnumerable().Sum(x => x.Value) : 
+                                                0;
+            var expenditurePaid = expenditureUser.Where(x => x.Paid && x.TypeDipense == Entities.Enums.EnumTypeExpenditure.Account)
+                                                 .Sum(x => x.Value);
+            var expenditurePendent = expenditureUser.Where(x => !x.Paid && x.TypeDipense == Entities.Enums.EnumTypeExpenditure.Account)
+                                                 .Sum(x => x.Value);
+            var investiment = expenditureUser.Where(x => x.TypeDipense == Entities.Enums.EnumTypeExpenditure.Investment)
+                                                 .Sum(x => x.Value);
+            return new
+            {
+                Success = "Okay",
+                ExpenditurePaid = expenditurePaid,
+                ExpenditurePendent = expenditurePendent,
+                ExpenditureNotPaidMonthBefore = expenditureNotPaidMonthBefore,
+                Investiment = investiment
+            };
+        }
+
+        /// <summary>
         /// Updates the expenditure.
         /// </summary>
         /// <param name="expenditure">The expenditure.</param>
